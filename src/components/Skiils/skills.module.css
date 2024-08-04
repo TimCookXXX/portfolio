@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=VT323&display=swap');
+
+:root {
+    --neon-pink: #ff6ec7;
+    --neon-blue: #00f7ff;
+    --neon-purple: #b967ff;
+    --neon-yellow: #ffff00;
+    --sunset-orange: #ff8c69;
+}
+
+.skillsContainer {
+    background: linear-gradient(180deg, var(--neon-pink) 0%, #7873f5 100%);
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    font-family: 'VT323', monospace;
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+.title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(2rem, 5vw, 4rem);
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--neon-yellow);
+    text-shadow:
+        3px 3px 0 var(--neon-pink),
+        6px 6px 0 var(--neon-blue),
+        9px 9px 0 var(--sunset-orange);
+    animation: titleGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 5px var(--neon-yellow), 0 0 10px var(--neon-yellow), 0 0 15px var(--neon-yellow);
+    }
+
+    to {
+        text-shadow: 0 0 10px var(--neon-yellow), 0 0 20px var(--neon-yellow), 0 0 30px var(--neon-yellow);
+    }
+}
+
+.skillsChart {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.7);
+    border: 4px solid var(--neon-blue);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+
+.skillItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.skillItem:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.skillRank {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--neon-yellow);
+    margin-right: 1rem;
+    text-shadow: 2px 2px var(--sunset-orange);
+}
+
+.skillName {
+    flex: 1;
+    font-size: 1.2rem;
+    color: var(--neon-pink);
+    text-shadow: 1px 1px var(--neon-purple);
+}
+
+.skillBar {
+    flex: 2;
+    height: 20px;
+    background: var(--neon-blue);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.skillProgress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-pink), var(--sunset-orange));
+    transition: width 1s ease-in-out;
+}
+
+.skillLevel {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    color: var(--neon-yellow);
+    text-shadow: 1px 1px var(--neon-purple);
+}
+
+.currentTrack {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--neon-blue);
+    color: var(--neon-yellow);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    box-shadow: 0 0 10px var(--neon-blue);
+    animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
+
+.vhsTape {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 60px;
+    background: var(--sunset-orange);
+    border: 2px solid var(--neon-yellow);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: var(--neon-blue);
+    transform: rotate(15deg);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.vhsTape::before,
+.vhsTape::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: var(--neon-yellow);
+    border-radius: 50%;
+    top: 15px;
+}
+
+.vhsTape::before {
+    left: 15px;
+}
+
+.vhsTape::after {
+    right: 15px;
+}
+
+@media (max-width: 768px) {
+    .skillsContainer {
+        padding: 2rem 1rem;
+    }
+
+    .skillRank {
+        font-size: 1.5rem;
+    }
+
+    .skillName,
+    .skillLevel {
+        font-size: 1rem;
+    }
+
+    .vhsTape {
+        top: 10px;
+        right: 10px;
+        width: 80px;
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    .vhsTape::before,
+    .vhsTape::after {
+        width: 20px;
+        height: 20px;
+        top: 15px;
+    }
+
+    .currentTrack {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}

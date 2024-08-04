@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@400;700&display=swap');
+
+:root {
+    --neon-pink: #ff00de;
+    --neon-blue: #00ffff;
+    --neon-purple: #ff69b4;
+    --background-gradient: linear-gradient(45deg, #ff1493, #00ffff, #ff69b4, #1e90ff);
+}
+
+@keyframes neonFlicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 15px #fff,
+            0 0 20px var(--neon-pink),
+            0 0 35px var(--neon-pink),
+            0 0 40px var(--neon-pink),
+            0 0 50px var(--neon-pink),
+            0 0 75px var(--neon-pink);
+    }
+
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+@keyframes backgroundPan {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.aboutContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: clamp(2rem, 5vw, 4rem);
+    background: var(--background-gradient);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.photoFrame {
+    width: clamp(150px, 30vw, 300px);
+    height: clamp(150px, 30vw, 300px);
+    border: 8px solid var(--neon-pink);
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow:
+        0 0 20px var(--neon-pink),
+        0 0 40px var(--neon-pink),
+        0 0 60px var(--neon-pink);
+    position: relative;
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.5) contrast(1.2) brightness(1.1);
+    transition: transform 0.3s ease;
+}
+
+.photoFrame:hover .photo {
+    transform: scale(1.1);
+}
+
+.bioContainer {
+    max-width: 800px;
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+}
+
+.name {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    color: var(--neon-pink);
+    font-family: 'Monoton', cursive;
+    animation: neonFlicker 1.5s infinite alternate;
+}
+
+.bio {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    line-height: 1.8;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+}
+
+.skillsContainer {
+    margin-top: 3rem;
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.skillsTitle {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 2rem;
+    color: var(--neon-blue);
+    text-shadow:
+        0 0 10px var(--neon-blue),
+        0 0 20px var(--neon-blue),
+        0 0 30px var(--neon-blue);
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.skillNeon {
+    padding: 0.7rem 1.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--neon-purple);
+    border-radius: 30px;
+    color: var(--neon-purple);
+    font-weight: bold;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    text-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple);
+    box-shadow:
+        0 0 10px var(--neon-purple),
+        inset 0 0 5px var(--neon-purple);
+    transition: all 0.3s ease;
+}
+
+.skillNeon:hover {
+    background-color: rgba(255, 105, 180, 0.3);
+    box-shadow:
+        0 0 20px var(--neon-purple),
+        0 0 40px var(--neon-purple),
+        inset 0 0 10px var(--neon-purple);
+    transform: translateY(-5px) rotate(5deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .aboutContainer,
+    .name,
+    .skillNeon,
+    .photo {
+        animation: none;
+        transition: none;
+    }
+}

@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Audiowide&display=swap');
+
+:root {
+    --neon-pink: #ff6ec7;
+    --neon-blue: #00f7ff;
+    --neon-purple: #b967ff;
+    --neon-yellow: #ffff00;
+    --dark-bg: #010a1a;
+}
+
+.footer {
+    background: linear-gradient(to bottom, var(--dark-bg), #000000);
+    color: white;
+    padding: 4rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Audiowide', cursive;
+}
+
+.neonSign {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.neonText {
+    font-size: 3rem;
+    font-family: 'Permanent Marker', cursive;
+    color: var(--neon-pink);
+    text-shadow:
+        0 0 7px var(--neon-pink),
+        0 0 10px var(--neon-pink),
+        0 0 21px var(--neon-pink),
+        0 0 42px var(--neon-purple),
+        0 0 82px var(--neon-purple),
+        0 0 92px var(--neon-purple),
+        0 0 102px var(--neon-purple),
+        0 0 151px var(--neon-purple);
+    will-change: text-shadow;
+}
+
+.flicker {
+    animation: pulsate 1.5s infinite alternate;
+}
+
+@keyframes pulsate {
+    100% {
+        text-shadow:
+            0 0 4px var(--neon-pink),
+            0 0 11px var(--neon-pink),
+            0 0 19px var(--neon-pink),
+            0 0 40px var(--neon-purple),
+            0 0 80px var(--neon-purple),
+            0 0 90px var(--neon-purple),
+            0 0 100px var(--neon-purple),
+            0 0 150px var(--neon-purple);
+    }
+
+    0% {
+        text-shadow:
+            0 0 2px var(--neon-pink),
+            0 0 4px var(--neon-pink),
+            0 0 6px var(--neon-pink),
+            0 0 10px var(--neon-purple),
+            0 0 45px var(--neon-purple),
+            0 0 55px var(--neon-purple),
+            0 0 70px var(--neon-purple),
+            0 0 80px var(--neon-purple);
+    }
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.contactInfo p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+.socialLinks {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.socialLinks a {
+    color: var(--neon-yellow);
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.socialLinks a:hover {
+    color: var(--neon-pink);
+    transform: scale(1.2) rotate(15deg);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: var(--neon-purple);
+    opacity: 0.8;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .neonText {
+        font-size: 2rem;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .socialLinks {
+        margin-top: 2rem;
+    }
+}

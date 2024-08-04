@@ -1,0 +1,204 @@
+:root {
+    --player-bg: rgba(0, 0, 0, 0.7);
+    --neon-pink: #ff1493;
+    --neon-blue: #00ffff;
+    --white: #ffffff;
+}
+
+.playerContainer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--player-bg);
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5), 0 0 40px rgba(0, 255, 255, 0.5);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.vinylRecord {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    transition: filter 0.3s ease;
+}
+
+.vinylRecord:hover {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+}
+
+.controls {
+    margin-top: 20px;
+    color: var(--white);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trackInfo {
+    text-align: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.trackTitle {
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+    margin-bottom: 5px;
+}
+
+.trackArtist {
+    font-size: 14px;
+    opacity: 0.8;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.buttons button {
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.buttons button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.playPauseButton {
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue)) !important;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.volumeControl {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.volumeSlider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.volumeSlider:hover {
+    opacity: 1;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--neon-blue);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.volumeSlider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--neon-blue);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+    .playerContainer {
+        bottom: 10px;
+        right: 10px;
+        width: auto !important;
+    }
+
+    .controls {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .trackInfo {
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    .buttons {
+        margin-bottom: 0;
+    }
+
+    .volumeControl {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .playerContainer {
+        flex-direction: row;
+        height: auto !important;
+        padding: 5px;
+    }
+
+    .vinylRecord {
+        width: 60px;
+        height: 60px;
+    }
+
+    .controls {
+        margin-top: 0;
+        margin-left: 10px;
+    }
+
+    .trackInfo {
+        flex: 1;
+    }
+
+    .buttons {
+        gap: 10px;
+    }
+
+    .playPauseButton {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .vinylRecord,
+    .buttons button,
+    .volumeSlider {
+        transition: none;
+    }
+}

@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@400;700&display=swap');
+
+:root {
+    --neon-pink: #ff00ff;
+    --neon-blue: #00ffff;
+    --neon-yellow: #ffff00;
+    --neon-purple: #b967ff;
+    --background-gradient: linear-gradient(135deg, #0c0c2a, #2a0c2a, #4a0c2a, #2a0c4a);
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background: var(--background-gradient);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    background-image: url('../../assets/miami-skyline.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: backgroundPulse 10s infinite alternate;
+    filter: hue-rotate(45deg);
+}
+
+@keyframes backgroundPulse {
+    from {
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        transform: scale(1.1);
+        filter: hue-rotate(90deg);
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: clamp(1rem, 5vw, 2rem);
+}
+
+.name {
+    font-family: 'Monoton', cursive;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--neon-pink);
+    text-shadow:
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-pink),
+        0 0 30px var(--neon-pink),
+        0 0 40px var(--neon-blue),
+        0 0 70px var(--neon-blue);
+    animation: neonFlicker 1.5s infinite alternate;
+}
+
+@keyframes neonFlicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        color: var(--neon-pink);
+        text-shadow:
+            0 0 10px var(--neon-pink),
+            0 0 20px var(--neon-pink),
+            0 0 30px var(--neon-pink),
+            0 0 40px var(--neon-blue),
+            0 0 70px var(--neon-blue);
+    }
+
+    20%, 24%, 55% {
+        color: #222;
+        text-shadow: none;
+    }
+}
+
+.title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--neon-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow:
+        0 0 5px var(--neon-blue),
+        0 0 10px var(--neon-blue),
+        0 0 20px var(--neon-blue);
+    animation: titleGlow 4s infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue);
+    }
+
+    to {
+        text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+    }
+}
+
+.description {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    max-width: 40rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.button {
+    font-family: 'Orbitron', sans-serif;
+    padding: 0.75rem 2rem;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-weight: 700;
+    color: #0c0c2a;
+    background-color: var(--neon-yellow);
+    border: none;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 0 10px var(--neon-yellow),
+        0 0 20px var(--neon-yellow);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to bottom right,
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0));
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    from {
+        transform: translateX(-100%) rotate(45deg);
+    }
+
+    to {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+.button:hover {
+    background-color: var(--neon-pink);
+    color: white;
+    box-shadow:
+        0 0 20px var(--neon-pink),
+        0 0 40px var(--neon-pink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .container,
+    .background,
+    .name,
+    .title,
+    .button::before {
+        animation: none;
+    }
+
+    .button:hover {
+        transform: none;
+    }
+}
