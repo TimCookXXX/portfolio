@@ -11,10 +11,7 @@ const Intro: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const [isZooming, setIsZooming] = useState(false);
 
   const steps = [
-    "C:\\>_",
     "C:\\>LOAD PORTFOLIO.EXE",
-    "Loading components...",
-    "Initializing Miami Vice mode...",
     "Preparing to launch...",
     "Welcome to Tim's Rad Portfolio!",
   ];
